@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMEEX GROW - Sustainable Agriculture</title>
+    <meta name="description" content="Environmentally Friendly Organic Liquid Fertilizer from Eco Enzyme and Household Waste for Sustainable Agriculture">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0', 300: '#86efac', 400: '#4ade80',
+                            500: '#22c55e', 600: '#16a34a', 700: '#15803d', 800: '#166534', 900: '#14532d',
+                        },
+                        accent: {
+                            50: '#fff5f2', 100: '#ffe8e0', 200: '#ffcbb5', 300: '#ffa682', 400: '#FF7F50',
+                            500: '#f25b27', 600: '#d44214', 700: '#b13212', 800: '#8e2a14', 900: '#722514',
+                        },
+                        surface: {
+                            50: '#fafafa',
+                            100: '#f4f4f5',
+                            200: '#e4e4e7',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        heading: ['Poppins', 'system-ui', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+                        'elegant': '0 20px 40px -10px rgba(0,0,0,0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #fdfdfd; 
+            color: #334155; 
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6, .font-heading { font-family: 'Poppins', sans-serif; }
+        
+        .slide-active { opacity: 1; z-index: 10; transition: opacity 1.5s ease-in-out; }
+        .slide-inactive { opacity: 0; z-index: 0; transition: opacity 1.5s ease-in-out; }
+        
+        .bento-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px -5px rgba(0,0,0,0.03);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
+        }
+        
+        .bento-card:hover {
+            border-color: rgba(255, 127, 80, 0.4);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08);
+            transform: translateY(-5px);
+        }
+
+        .reveal-section { opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-section.visible { opacity: 1; transform: translateY(0); }
+        .parallax-element { transition: transform 0.1s cubic-bezier(0.0, 0.0, 0.2, 1); }
+    </style>
+
+<style id="immersive-redesign">
+:root{
+  --green:#22c55e;
+  --green-dark:#14532d;
+  --coral:#FF7F50;
+  --ink:#17211b;
+  --paper:#fdfdfd;
+}
+html{scroll-behavior:smooth}
+body{background:var(--paper); color:#334155}
+
+nav{
+  background:rgba(253,253,253,.72)!important;
+  border-bottom-color:rgba(255,255,255,.35)!important;
+  box-shadow:0 10px 35px rgba(20,83,45,.06)!important;
+}
+nav > div{max-width:90rem!important}
+nav .h-20, nav .md\:h-24{height:88px!important}
+nav a{transition:all .35s ease}
+nav a[href="#introduction"], nav a[href="#method"], nav a[href="#results"], nav a[href="#conclusion"]{ letter-spacing:.16em!important; }
+
+section.relative.w-full.h-screen{ height:100svh!important; min-height:720px; }
+#hero-slider > div{ transform:scale(1.035); transition:opacity 1.8s ease, transform 8s cubic-bezier(.2,.7,.2,1); background-position:center!important; }
+#hero-slider .slide-active{transform:scale(1.07)}
+
+/* HERO SLIDER OVERLAY (Dibuat Dark Green Linear Gradient) */
+#hero-slider:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:5;
+  pointer-events:none;
+  /* Menggunakan nilai RGBA hijau gelap (#14532d setara rgba(20,83,45,x)) */
+  background: linear-gradient(180deg, rgba(20,83,45,0.85) 0%, rgba(20,83,45,0.6) 50%, rgba(0,0,0,0.95) 100%);
+}
+
+section.relative.w-full.h-screen > div:nth-of-type(2){ align-items:flex-end!important; justify-content:flex-end!important; padding:0!important; padding-bottom:clamp(70px,9vh,130px)!important; text-align:left!important; }
+section.relative.w-full.h-screen > div:nth-of-type(2) > div{ max-width:86rem!important; width:100%!important; margin:0 auto!important; padding:0 6vw!important; background:transparent!important; backdrop-filter:none!important; border:0!important; box-shadow:none!important; align-items:flex-start!important; }
+
+/* MENAMBAHKAN DROP SHADOW LEBIH KUAT PADA TEKS */
+section.relative.w-full.h-screen h1{ 
+    color:#fff!important; 
+    font-size:clamp(3rem,7vw,7.6rem)!important; 
+    line-height:.96!important; 
+    letter-spacing:-.055em!important; 
+    max-width:1100px; 
+    /* Shadow dipertebal agar menonjol */
+    text-shadow: 0 4px 15px rgba(0,0,0,0.9), 0 10px 40px rgba(0,0,0,0.7) !important; 
+}
+section.relative.w-full.h-screen h1 span{ background-image:linear-gradient(90deg,#fff 0%,#b7f7c9 50%,#FFB094 100%)!important; }
+section.relative.w-full.h-screen p{ 
+    color:rgba(255,255,255,.95)!important; 
+    font-size:clamp(1rem,1.7vw,1.45rem)!important; 
+    max-width:700px!important; 
+    /* Shadow dipertebal agar menonjol */
+    text-shadow: 0 2px 10px rgba(0,0,0,0.9), 0 5px 20px rgba(0,0,0,0.6) !important; 
+}
+
+section.relative.w-full.h-screen > div:nth-of-type(2) > div > div:first-child{ align-items:flex-start!important; margin-bottom:20px!important; }
+section.relative.w-full.h-screen > div:nth-of-type(2) > div > div:first-child span{ background:rgba(255,127,80,.92)!important; color:#fff!important; border-color:rgba(255,255,255,.25)!important; }
+section.relative.w-full.h-screen > div:nth-of-type(2) > div > div:first-child span+span{ background:rgba(0,0,0,.24)!important; color:#fff!important; border-color:rgba(255,255,255,.22)!important; backdrop-filter:blur(12px); }
+section.relative.w-full.h-screen > div:nth-of-type(2) > div > div:last-child{ border-top-color:rgba(255,255,255,.28)!important; max-width:850px!important; }
+section.relative.w-full.h-screen h3, section.relative.w-full.h-screen > div:nth-of-type(2) > div > div:last-child p, section.relative.w-full.h-screen > div:nth-of-type(2) > div > div:last-child span, section.relative.w-full.h-screen svg{ color:rgba(255,255,255,.92)!important; }
+#prev-slide,#next-slide{ background:rgba(0,0,0,.4)!important; color:#fff!important; border-color:rgba(255,255,255,.35)!important; backdrop-filter:blur(12px); }
+
+section.py-12.bg-white{ padding-top:58px!important; padding-bottom:58px!important; }
+section.py-12.bg-white img{filter:none!important}
+
+#introduction, #method, #results, #conclusion { scroll-margin-top: 80px; }
+#introduction > .container-content, #method > .container-content, #results > .container-content, #conclusion > .container-content { 
+    max-width: 90rem !important; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+#introduction h3.text-4xl, #method h3.text-4xl, #results h3.text-4xl, #conclusion h3.text-4xl{ font-size:clamp(2.7rem,5vw,5.2rem)!important; letter-spacing:-.045em; }
+
+.bento-card{ border-radius:2.25rem!important; box-shadow:0 22px 70px rgba(20,83,45,.07)!important; border-color:rgba(20,83,45,.08)!important; }
+.bento-card:hover{ transform:translateY(-7px); box-shadow:0 30px 85px rgba(20,83,45,.12)!important; }
+
+#introduction .md\:col-span-2 .h-48{ height:clamp(280px,30vw,520px)!important; }
+#introduction .md\:col-span-2{ min-height:650px!important; }
+#introduction .md\:col-span-2 img{ object-position:center!important; }
+#introduction .md\:col-span-1{ min-height:650px!important; }
+#introduction .md\:col-span-3{ padding:clamp(34px,5vw,80px)!important; min-height:420px; }
+#introduction .md\:col-span-3 > div:first-child{ opacity:.20!important; transform:scale(1.12); }
+#introduction .md\:col-span-3 .grid{ gap:18px!important; }
+
+.rq-banner-section {
+    position: relative;
+    width: 100%;
+    padding-top: clamp(80px, 10vw, 150px);
+    padding-bottom: clamp(80px, 10vw, 150px);
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.rq-banner-section > div:first-child{ opacity:.55!important; filter:saturate(1.15)!important; transform:scale(1.04); }
+.rq-banner-section > div:nth-child(2){ background:linear-gradient(180deg,rgba(255,255,255,.45),rgba(255,255,255,.18),rgba(255,255,255,.5))!important; backdrop-filter:none!important; }
+.rq-card-content { 
+    max-width: 800px !important; 
+    width: 90%; 
+    background: transparent !important; 
+    backdrop-filter: none !important; 
+    border: none !important; 
+    box-shadow: none !important;
+    padding: clamp(35px, 5vw, 85px) !important; 
+    margin: 0 auto !important; 
+    text-align: center;
+}
+
+#method .bento-card.p-8{ padding:clamp(24px,3vw,42px)!important; }
+#method .bento-card .h-48{ height:clamp(300px,25vw,430px)!important; border-radius:1.6rem!important; }
+#method .bento-card .h-48 img{ transform:scale(1.015); }
+#method .bento-card:hover .h-48 img{ transform:scale(1.07); }
+#method .grid.grid-cols-1.md\:grid-cols-3{ gap:24px!important; }
+#method .bento-card.p-8.lg\:p-12{ padding:clamp(34px,5vw,80px)!important; margin-top:24px; }
+#method .bento-card.p-8.lg\:p-12 .grid{ gap:20px!important; }
+
+#results .grid.grid-cols-1.md\:grid-cols-2{ gap:28px!important; }
+#results .grid.grid-cols-1.md\:grid-cols-2 .bento-card > div:first-child{ height:clamp(390px,38vw,650px)!important; padding:clamp(18px,3vw,45px)!important; background:#f7f9f7!important; }
+#results .grid.grid-cols-1.md\:grid-cols-2 .bento-card img{ width:100%!important; height:100%!important; object-fit:contain!important; }
+#results .grid.grid-cols-1.md\:grid-cols-2 .bento-card > div:last-child{ padding:clamp(30px,4vw,55px)!important; }
+#results .grid.grid-cols-1.md\:grid-cols-2 .bento-card h3{ font-size:clamp(1.8rem,2.6vw,2.8rem)!important; }
+
+#results .bento-card.p-8.lg\:p-16{ padding:clamp(28px,5vw,75px)!important; }
+
+#results .overall-finding-card{ 
+    min-height:560px; 
+    display:flex; 
+    align-items:center; 
+    justify-content: center; 
+    width: 100%;
+}
+#results .overall-finding-card > div:last-child{ 
+    padding:clamp(55px,8vw,120px)!important; 
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+#results .overall-finding-card p.main-finding-text{ 
+    font-size:clamp(2.3rem,5vw,5.3rem)!important; 
+    letter-spacing:-.045em; 
+    text-align: center;
+}
+
+#conclusion .bento-card.min-h-\[60vh\]{ min-height:760px!important; border-radius:2.5rem!important; }
+#conclusion .bento-card.min-h-\[60vh\] .lg\:w-1\/2:first-child{ min-height:760px!important; }
+#conclusion .bento-card.min-h-\[60vh\] .lg\:w-1\/2:first-child img{ transition:transform 2.2s cubic-bezier(.2,.7,.2,1)!important; }
+#conclusion .bento-card.min-h-\[60vh\]:hover .lg\:w-1\/2:first-child img{ transform:scale(1.045); }
+#conclusion .bento-card.min-h-\[60vh\] .lg\:w-1\/2:last-child{ padding:clamp(38px,5vw,90px)!important; }
+#conclusion .bento-card.min-h-\[60vh\] .lg\:w-1\/2:last-child > p{ font-size:clamp(1rem,1.4vw,1.25rem)!important; }
+
+.future-research-hero { height: clamp(460px, 50vw, 720px) !important; width: 100%; position: relative; overflow: hidden; }
+.future-research-hero > div:first-child { background-size: cover !important; background-position: center !important; }
+.future-research-hero h3 { font-size: clamp(3rem, 7vw, 7rem) !important; letter-spacing: -.055em; }
+.future-research-content { max-width: 90rem !important; margin-left: auto; margin-right: auto; position: relative; z-index: 10; margin-top: -100px; padding-left: 1rem; padding-right: 1rem; }
+@media (min-width: 640px) { .future-research-content { padding-left: 1.5rem; padding-right: 1.5rem; } }
+@media (min-width: 1024px) { .future-research-content { padding-left: 2rem; padding-right: 2rem; margin-top: -150px; } }
+
+section.py-24.bg-white.border-t{ padding-top:110px!important; padding-bottom:110px!important; }
+section.py-24.bg-white.border-t .text-sm{ font-size:.95rem!important; }
+section.py-24.bg-white.border-t a{ padding:24px!important; border-radius:1.3rem!important; }
+
+footer{ padding-top:90px!important; padding-bottom:90px!important; }
+
+@media (max-width: 768px){
+  nav .md\:h-24{height:76px!important}
+  section.relative.w-full.h-screen{ min-height:680px!important; }
+  section.relative.w-full.h-screen h1{ font-size:clamp(2.5rem,10vw,4rem)!important; }
+  #introduction .md\:col-span-2, #introduction .md\:col-span-1{ min-height:auto!important; }
+  #introduction .md\:col-span-2 .h-48{ height:310px!important; }
+  .rq-banner-section { min-height: 500px !important; }
+  #method .bento-card .h-48{ height:290px!important; }
+  #results .grid.grid-cols-1.md\:grid-cols-2 .bento-card > div:first-child{ height:330px!important; }
+  #conclusion .bento-card.min-h-\[60vh\] .lg\:w-1\/2:first-child{ min-height:420px!important; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{ scroll-behavior:auto!important; transition-duration:.01ms!important; animation-duration:.01ms!important; }
+}
+</style>
+
+</head>
+<body class="antialiased selection:bg-accent-400 selection:text-white">
+
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100 shadow-sm transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 md:h-24 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-heading font-bold text-xl md:text-2xl tracking-tighter text-gray-900 flex items-center gap-4 group">
+                        <div class="w-12 h-12 md:w-14 md:h-14 bg-white rounded-xl flex flex-col items-center justify-center overflow-hidden relative transition-transform group-hover:scale-105 border border-gray-100 shadow-sm">
+                            <img src="assets/ameex_logo_nav.webp" alt="AMEEX Logo" class="absolute inset-2 w-[calc(100%-1rem)] h-[calc(100%-1rem)] object-contain drop-shadow-sm">
+                        </div>
+                        <span class="tracking-widest uppercase">AMEEX GROW</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#introduction" class="text-gray-500 hover:text-accent-400 font-medium tracking-wide transition-colors text-sm uppercase">Intro</a>
+                    <a href="#method" class="text-gray-500 hover:text-accent-400 font-medium tracking-wide transition-colors text-sm uppercase">Method</a>
+                    <a href="#results" class="text-gray-500 hover:text-accent-400 font-medium tracking-wide transition-colors text-sm uppercase">Results</a>
+                    <a href="#conclusion" class="text-gray-500 hover:text-accent-400 font-medium tracking-wide transition-colors text-sm uppercase">Conclusion</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative w-full h-screen overflow-hidden group bg-surface-50 flex items-center justify-center">
+        <!-- Overlay HTML lebih gelap untuk berjaga-jaga selain overlay CSS -->
+	<div class="absolute inset-0 bg-brand-900/60 z-10 pointer-events-none"></div>
+	<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-brand-900/50 to-transparent z-10 pointer-events-none"></div>
+        
+        <div id="hero-slider" class="absolute inset-0 w-full h-full parallax-bg z-0">
+            <div class="absolute inset-0 slide-active bg-fixed bg-cover bg-center" style="background-image: url('assets/hero_farming_01.webp');" data-slide="0"></div>
+            <div class="absolute inset-0 slide-inactive bg-fixed bg-cover bg-center" style="background-image: url('assets/hero_eco_enzyme_02.webp');" data-slide="1"></div>
+            <div class="absolute inset-0 slide-inactive bg-fixed bg-cover bg-center" style="background-image: url('assets/hero_team_03.webp');" data-slide="2"></div>
+        </div>
+
+        <div class="relative z-20 flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8 w-full max-w-5xl mx-auto pt-20">
+            
+            <div class="flex flex-col items-center mb-6">
+                <!-- Drop shadow pada badge -->
+                <span class="inline-block py-1.5 px-6 rounded-full bg-accent-500 text-white font-bold text-xs md:text-sm tracking-widest mb-3 shadow-lg drop-shadow-md">WASISC 2026</span>
+                <span class="inline-block px-6 py-2 bg-white/20 backdrop-blur-md rounded-full text-white text-xs md:text-sm tracking-wide border border-white/30 drop-shadow-md font-medium">World Agriculture, Strategic Studies & Innovation Science Competition</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] mb-6 font-heading w-full">
+                Environmentally Friendly <br/>
+                Organic Liquid Fertilizer
+            </h1>
+            
+            <p class="text-lg md:text-2xl text-gray-100 mb-10 leading-relaxed font-light max-w-3xl">
+                From Eco Enzyme and Household Waste for Sustainable Agriculture
+            </p>
+            
+            <div class="w-full max-w-2xl bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-6 md:p-8 mt-4 shadow-2xl drop-shadow-2xl">
+                <h3 class="text-xs font-bold tracking-[0.2em] text-accent-400 uppercase mb-3 drop-shadow-md">Research Team</h3>
+                <p class="text-base md:text-lg text-white font-medium leading-relaxed mb-3 drop-shadow-md">
+                    Sanaz Aisya Janeeta &bull; Ahmad Dhafin Ramadanish<br class="hidden md:block"> Ahmad Dhawy Adrian &bull; Intan Permata Hati
+                </p>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6 text-sm text-gray-200 drop-shadow-md">
+                    <span class="tracking-wide font-medium">Supervisor: Nurul Herliani, S.Pd.</span>
+                    <span class="hidden md:block text-brand-400">&bull;</span>
+                    <div class="inline-flex items-center gap-2 font-medium">
+                        <svg class="w-5 h-5 text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                        SMP Negeri 1 Banjarmasin, Indonesia
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button id="prev-slide" class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 p-4 rounded-full bg-white/20 border border-white/30 backdrop-blur-md text-white hover:bg-accent-500 hover:border-accent-500 transition-all opacity-0 group-hover:opacity-100 cursor-pointer shadow-lg">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        </button>
+        <button id="next-slide" class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 p-4 rounded-full bg-white/20 border border-white/30 backdrop-blur-md text-white hover:bg-accent-500 hover:border-accent-500 transition-all opacity-0 group-hover:opacity-100 cursor-pointer shadow-lg">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </button>
+
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex space-x-4 bg-black/40 p-3 rounded-full backdrop-blur-md border border-white/10 shadow-lg">
+            <button class="slide-indicator w-12 h-1.5 rounded-full bg-accent-500 transition-all" data-target="0"></button>
+            <button class="slide-indicator w-12 h-1.5 rounded-full bg-white/50 hover:bg-white transition-all shadow-sm" data-target="1"></button>
+            <button class="slide-indicator w-12 h-1.5 rounded-full bg-white/50 hover:bg-white transition-all shadow-sm" data-target="2"></button>
+        </div>
+    </section>
+
+    <section class="py-12 bg-white border-b border-gray-100 relative z-30">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-xs font-semibold text-gray-400 uppercase tracking-[0.3em] mb-10">Supported By & Participated In</p>
+            <div class="flex flex-wrap justify-center gap-12 md:gap-24 items-center transition-opacity duration-500">
+                <div class="w-32 md:w-48 h-16 md:h-24 relative overflow-hidden group hover:scale-105 transition-transform duration-500">
+                    <img src="assets/sponsor_logo_organizer.webp" alt="Organizer Logo" class="absolute inset-0 w-full h-full object-contain">
+                </div>
+                <div class="w-32 md:w-48 h-16 md:h-24 relative overflow-hidden group hover:scale-105 transition-transform duration-500">
+                    <img src="assets/event_logo_wasisc_2026.webp" alt="WASISC Logo" class="absolute inset-0 w-full h-full object-contain">
+                </div>
+                <div class="w-32 md:w-48 h-16 md:h-24 relative overflow-hidden group hover:scale-105 transition-transform duration-500">
+                    <img src="assets/school_logo_smpn1.webp" alt="School Logo" class="absolute inset-0 w-full h-full object-contain">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="introduction" class="pt-32 pb-0 relative bg-[#fdfdfd]">
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+            <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-brand-100/50 blur-3xl opacity-50 parallax-element" data-speed="0.2"></div>
+            <div class="absolute top-[40%] right-[-10%] w-[30%] h-[50%] rounded-full bg-accent-100/50 blur-3xl opacity-50 parallax-element" data-speed="-0.1"></div>
+        </div>
+
+        <div class="container-content px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-20 reveal-section">
+                <h2 class="text-sm font-bold tracking-[0.3em] text-accent-400 uppercase mb-4">Phase 01</h2>
+                <h3 class="text-4xl md:text-5xl font-heading font-bold text-gray-900 mb-6">Introduction</h3>
+                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-accent-400 to-transparent mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 auto-rows-min pb-24">
+                <div class="bento-card md:col-span-2 group reveal-section relative overflow-hidden min-h-[400px] flex flex-col justify-start p-8 lg:p-12">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-gray-100 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-14 h-14 rounded-2xl bg-white shadow-sm text-gray-800 flex items-center justify-center border border-gray-100">
+                                <svg class="w-7 h-7 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            </div>
+                            <h3 class="text-3xl font-bold font-heading text-gray-900">The Problem</h3>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed text-lg font-light max-w-2xl">
+                            Household organic waste is often discarded even though it still contains potentially useful nutrients. In Indonesia, organic waste represents a large proportion of total waste, and unmanaged organic waste can contribute to environmental problems. Excessive chemical fertilizers affect soil and water quality.
+                        </p>
+                    </div>
+                    <div class="mt-8 rounded-2xl overflow-hidden h-48 relative border border-gray-100 shadow-inner">
+                         <img src="assets/intro_prob_waste_chemical.webp" alt="The Problem" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+                    </div>
+                </div>
+
+                <div class="bento-card md:col-span-1 group reveal-section relative overflow-hidden bg-gradient-to-br from-brand-50 to-white min-h-[400px] p-8 lg:p-10 flex flex-col justify-center border-brand-100">
+                    <div class="absolute top-0 right-0 p-8 opacity-10">
+                        <svg class="w-40 h-40 text-brand-500 transform rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                    </div>
+                    <div class="relative z-10">
+                        <h3 class="text-3xl font-bold font-heading text-brand-600 mb-6">The Idea</h3>
+                        <p class="text-gray-700 leading-relaxed text-xl font-light">
+                            Instead of treating household organic waste as useless waste, we explored how it could be converted into a highly effective <strong class="text-brand-800 font-semibold">liquid organic fertilizer.</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bento-card md:col-span-3 reveal-section p-8 lg:p-12 relative overflow-hidden bg-white">
+                    <div class="absolute inset-0 bg-fixed bg-cover bg-center opacity-20" style="background-image: url('assets/intro_comp_ameex_materials.webp');"></div>
+                    <div class="relative z-10 text-center">
+                        <h3 class="text-3xl lg:text-4xl font-bold font-heading text-gray-900 mb-4">What is AMEEX Grow?</h3>
+                        <p class="text-gray-600 mb-10 text-lg max-w-2xl mx-auto font-medium">Combining essential household materials for optimal plant nutrition:</p>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            <div class="bg-gray-50/90 backdrop-blur-sm p-6 rounded-2xl flex flex-col items-center text-center border border-gray-200 hover:shadow-md transition-shadow">
+                                <div class="w-14 h-14 rounded-full bg-white shadow-sm text-gray-600 flex items-center justify-center font-heading text-xl font-bold mb-4 border border-gray-100">1</div>
+                                <span class="font-medium text-gray-800 tracking-wide">Rice washing water</span>
+                            </div>
+                            <div class="bg-gray-50/90 backdrop-blur-sm p-6 rounded-2xl flex flex-col items-center text-center border border-gray-200 hover:shadow-md transition-shadow">
+                                <div class="w-14 h-14 rounded-full bg-white shadow-sm text-gray-600 flex items-center justify-center font-heading text-xl font-bold mb-4 border border-gray-100">2</div>
+                                <span class="font-medium text-gray-800 tracking-wide">Shallot & Garlic skins</span>
+                            </div>
+                            <div class="bg-gray-50/90 backdrop-blur-sm p-6 rounded-2xl flex flex-col items-center text-center border border-gray-200 hover:shadow-md transition-shadow">
+                                <div class="w-14 h-14 rounded-full bg-white shadow-sm text-gray-600 flex items-center justify-center font-heading text-xl font-bold mb-4 border border-gray-100">3</div>
+                                <span class="font-medium text-gray-800 tracking-wide">Eggshells</span>
+                            </div>
+                            <div class="bg-accent-50/90 backdrop-blur-sm p-6 rounded-2xl flex flex-col items-center text-center border border-accent-200 hover:shadow-md transition-shadow">
+                                <div class="w-14 h-14 rounded-full bg-accent-400 text-white flex items-center justify-center font-heading text-xl font-bold mb-4 shadow-[0_0_15px_rgba(255,127,80,0.4)]">4</div>
+                                <span class="font-bold text-accent-500 tracking-wide">Eco Enzyme</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="rq-banner-section reveal-section relative bg-[#fdfdfd]">
+        <div class="absolute inset-0 bg-fixed bg-center bg-cover z-0 opacity-20 filter saturate-150" style="background-image: url('assets/intro_q_eggplant_growth.webp');"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#fdfdfd]/90 via-[#fdfdfd]/70 to-[#fdfdfd]/90 z-0 backdrop-blur-sm"></div>
+        
+        <div class="relative z-10 rq-card-content">
+            <div class="inline-flex items-center justify-center p-4 rounded-full bg-brand-50 border border-brand-100 mb-8 shadow-sm">
+                <svg class="w-8 h-8 text-brand-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path></svg>
+            </div>
+            <h3 class="text-2xl font-bold font-heading mb-6 text-brand-500 uppercase tracking-widest">Research Question</h3>
+            <p class="text-3xl md:text-5xl lg:text-6xl font-light italic leading-tight text-gray-900 drop-shadow-sm">
+                "Can <span class="font-bold text-brand-600">AMEEX Grow</span> improve soil nutrient conditions and the growth of purple eggplant compared with chemical fertilizer and water alone?"
+            </p>
+        </div>
+    </div>
+
+    <section id="method" class="py-24 relative bg-surface-50 border-t border-gray-100">
+        <div class="container-content px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 reveal-section">
+                <h2 class="text-sm font-bold tracking-[0.3em] text-brand-500 uppercase mb-4">Phase 02</h2>
+                <h3 class="text-4xl md:text-5xl font-heading font-bold text-gray-900 mb-6">Method</h3>
+                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-brand-500 to-transparent mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 auto-rows-min mb-8">
+                <div class="bento-card p-8 group reveal-section flex flex-col h-full bg-white">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-gray-50 text-gray-700 rounded-xl flex items-center justify-center border border-gray-100 group-hover:border-accent-400 group-hover:text-accent-400 transition-colors shadow-sm">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold font-heading text-gray-900">Design</h3>
+                    </div>
+                    <div class="w-full h-48 rounded-2xl overflow-hidden mb-8 relative border border-gray-100 shadow-inner">
+                        <img src="assets/method_design_location.webp" alt="Research Design" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <ul class="space-y-4 flex-grow">
+                        <li class="flex flex-col gap-1 border-b border-gray-100 pb-3"><strong class="text-xs uppercase tracking-wider text-accent-400">Period</strong> <span class="text-gray-600 font-medium">18 Feb - 7 Sep 2026</span></li>
+                        <li class="flex flex-col gap-1 border-b border-gray-100 pb-3"><strong class="text-xs uppercase tracking-wider text-accent-400">Location</strong> <span class="text-gray-600 font-medium">SMPN 1 Banjarmasin</span></li>
+                        <li class="flex flex-col gap-1 border-b border-gray-100 pb-3"><strong class="text-xs uppercase tracking-wider text-accent-400">Subjects</strong> <span class="text-gray-600 font-medium">30 purple eggplants</span></li>
+                    </ul>
+                </div>
+
+                <div class="bento-card p-8 group reveal-section flex flex-col h-full bg-white">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-gray-50 text-gray-700 rounded-xl flex items-center justify-center border border-gray-100 group-hover:border-brand-500 group-hover:text-brand-500 transition-colors shadow-sm">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold font-heading text-gray-900">Preparation</h3>
+                    </div>
+                    <div class="w-full h-48 rounded-2xl overflow-hidden mb-8 relative border border-gray-100 shadow-inner">
+                        <img src="assets/method_prep_fermentation.webp" alt="Preparation" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="space-y-4 flex-grow">
+                        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                            <strong class="text-gray-900 block mb-1 text-sm tracking-wide">Liquid Organic Fertilizer</strong>
+                            <p class="text-gray-600 font-light text-sm leading-relaxed">Fermented shallot/garlic skins + rice water + sugar for 7 days.</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                            <strong class="text-gray-900 block mb-1 text-sm tracking-wide">Eco Enzyme</strong>
+                            <p class="text-gray-600 font-light text-sm leading-relaxed">Fermented fruit peels + brown sugar + water for 3 months.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bento-card p-8 group reveal-section flex flex-col h-full bg-gradient-to-b from-brand-50 to-white border-brand-200 shadow-brand-100/50">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-white text-brand-500 rounded-xl flex items-center justify-center border border-brand-200 shadow-sm">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold font-heading text-gray-900">Formulation</h3>
+                    </div>
+                    <div class="w-full h-48 rounded-2xl overflow-hidden mb-8 relative border border-white shadow-inner">
+                        <img src="assets/method_form_ratio.webp" alt="Final Formulation" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="flex-grow flex flex-col justify-center">
+                        <div class="flex items-center justify-between bg-white p-5 rounded-2xl border border-gray-100 mb-4 shadow-sm">
+                            <div class="text-center w-1/3">
+                                <span class="block text-3xl font-bold text-brand-500 mb-1 font-heading">1</span>
+                                <span class="text-[10px] text-gray-500 font-semibold uppercase tracking-widest">Eggshells</span>
+                            </div>
+                            <span class="text-gray-300 font-light text-2xl">:</span>
+                            <div class="text-center w-1/3">
+                                <span class="block text-3xl font-bold text-brand-500 mb-1 font-heading">1</span>
+                                <span class="text-[10px] text-gray-500 font-semibold uppercase tracking-widest">Enzyme</span>
+                            </div>
+                            <span class="text-gray-300 font-light text-2xl">:</span>
+                            <div class="text-center w-1/3">
+                                <span class="block text-3xl font-bold text-brand-500 mb-1 font-heading">10</span>
+                                <span class="text-[10px] text-gray-500 font-semibold uppercase tracking-widest">Liquid</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-center text-gray-500 mt-2 font-medium">
+                            Ex: 100g eggshells + 100mL eco enzyme + 1,000mL POC
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bento-card p-8 lg:p-12 reveal-section relative overflow-hidden bg-white border border-gray-200">
+                <div class="absolute inset-0 bg-fixed bg-cover bg-center opacity-5 filter saturate-0" style="background-image: url('assets/method_groups_abc.webp');"></div>
+                
+                <div class="relative z-10">
+                    <div class="text-center mb-12">
+                        <h3 class="text-3xl font-bold font-heading text-gray-900 mb-4">Plant Treatment Groups</h3>
+                        <p class="text-base text-gray-600 max-w-2xl mx-auto font-light">
+                            The plants were divided into 3 treatment groups, evaluating Plant height, Leaves, Flowers, Fruits, and Soil N-P-K.
+                        </p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-brand-50 p-6 rounded-2xl border border-brand-100 hover:-translate-y-1 transition-transform group shadow-sm">
+                            <div class="w-14 h-14 rounded-xl bg-brand-500 text-white flex items-center justify-center text-xl font-bold font-heading mb-4 shadow-[0_0_15px_rgba(34,197,94,0.3)]">A</div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">AMEEX Grow Group</h4>
+                            <p class="text-gray-700 font-light text-sm leading-relaxed">Diluted at 3 parts AMEEX Grow : 25 parts water. Applied once per day.</p>
+                        </div>
+                        
+                        <div class="bg-accent-50 p-6 rounded-2xl border border-accent-100 hover:-translate-y-1 transition-transform group shadow-sm">
+                            <div class="w-14 h-14 rounded-xl bg-accent-400 text-white flex items-center justify-center text-xl font-bold font-heading mb-4 shadow-[0_0_15px_rgba(255,127,80,0.3)]">B</div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">Chemical Fertilizer Group</h4>
+                            <p class="text-gray-700 font-light text-sm leading-relaxed">Conventional fertilizer was applied once per month.</p>
+                        </div>
+
+                        <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200 hover:-translate-y-1 transition-transform group shadow-sm">
+                            <div class="w-14 h-14 rounded-xl bg-gray-400 text-white flex items-center justify-center text-xl font-bold font-heading mb-4 shadow-sm">C</div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">Control Group</h4>
+                            <p class="text-gray-700 font-light text-sm leading-relaxed">Well water only, applied once per day.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="results" class="py-24 relative bg-white">
+        <div class="container-content px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 reveal-section">
+                <h2 class="text-sm font-bold tracking-[0.3em] text-accent-400 uppercase mb-4">Phase 03</h2>
+                <h3 class="text-4xl md:text-5xl font-heading font-bold text-gray-900 mb-6">Data and Discussion</h3>
+                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-accent-400 to-transparent mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                <div class="bento-card p-0 flex flex-col reveal-section group bg-white border border-gray-100">
+                    <div class="h-72 bg-gray-50 relative overflow-hidden border-b border-gray-100 p-6 flex items-center justify-center">
+                        <img src="assets/result_chart_plant_height.webp" alt="Plant Height Data" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold font-heading text-gray-900 mb-3">Plant Height</h3>
+                        <p class="text-gray-600 text-base leading-relaxed mb-6 font-light">AMEEX Grow showed stronger height growth than chemical fertilizer and water. The formulation provides essential nutrients.</p>
+                        <div class="inline-flex items-center gap-2 py-2 px-4 rounded-full bg-brand-50 text-brand-600 text-xs uppercase tracking-wider border border-brand-100 font-semibold">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            Key Finding: Better vegetative growth
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bento-card p-0 flex flex-col reveal-section group bg-white border border-gray-100">
+                    <div class="h-72 bg-gray-50 relative overflow-hidden border-b border-gray-100 p-6 flex items-center justify-center">
+                        <img src="assets/result_chart_leaf_count.webp" alt="Number of Leaves Data" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold font-heading text-gray-900 mb-3">Number of Leaves</h3>
+                        <p class="text-gray-600 text-base leading-relaxed mb-6 font-light">AMEEX Grow produced better leaf development. Nitrogen supports leaf formation, stem growth, and root development.</p>
+                        <div class="inline-flex items-center gap-2 py-2 px-4 rounded-full bg-brand-50 text-brand-600 text-xs uppercase tracking-wider border border-brand-100 font-semibold">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            Key Finding: Stronger vegetative development
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bento-card p-0 flex flex-col reveal-section group bg-white border border-gray-100">
+                    <div class="h-72 bg-gray-50 relative overflow-hidden border-b border-gray-100 p-6 flex items-center justify-center">
+                        <img src="assets/result_chart_flower_count.webp" alt="Number of Flowers Data" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold font-heading text-gray-900 mb-3">Number of Flowers</h3>
+                        <p class="text-gray-600 text-base leading-relaxed mb-6 font-light">AMEEX Grow showed better flowering development. Flower formation indicates a successful transition to reproductive growth.</p>
+                        <div class="inline-flex items-center gap-2 py-2 px-4 rounded-full bg-accent-50 text-accent-600 text-xs uppercase tracking-wider border border-accent-100 font-semibold">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            Key Finding: Improved flowering
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bento-card p-0 flex flex-col reveal-section group bg-white border border-gray-100">
+                    <div class="h-72 bg-gray-50 relative overflow-hidden border-b border-gray-100 p-6 flex items-center justify-center">
+                        <img src="assets/result_chart_fruit_count.webp" alt="Number of Fruits Data" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold font-heading text-gray-900 mb-3">Number of Fruits</h3>
+                        <p class="text-gray-600 text-base leading-relaxed mb-6 font-light">AMEEX Grow produced better fruit development. Potassium supports plant strength, water regulation, and fruit formation.</p>
+                        <div class="inline-flex items-center gap-2 py-2 px-4 rounded-full bg-accent-50 text-accent-600 text-xs uppercase tracking-wider border border-accent-100 font-semibold">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            Key Finding: Better fruit production
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bento-card p-8 lg:p-16 reveal-section bg-surface-50 border border-gray-200 mb-16 shadow-lg">
+                <div class="text-center mb-16">
+                    <h3 class="text-4xl font-bold font-heading text-gray-900 mb-4">Soil Nutrients (N-P-K)</h3>
+                    <p class="text-gray-600 text-lg max-w-2xl mx-auto font-light">Analyzing the impact of treatments on essential soil macronutrients.</p>
+                </div>
+                
+                <div class="flex flex-col lg:flex-row gap-12 items-stretch">
+                    <div class="w-full lg:w-1/3 flex flex-col justify-center space-y-6">
+                        <div class="flex items-start gap-5 bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                            <div class="w-14 h-14 rounded-xl bg-gray-100 text-gray-700 flex items-center justify-center text-xl font-bold font-heading">N</div>
+                            <div>
+                                <strong class="block text-xl text-gray-900 mb-1">Nitrogen</strong>
+                                <p class="text-gray-500 font-light mb-3 text-sm">Supports leaf and stem growth.</p>
+                                <span class="inline-block px-3 py-1 bg-gray-50 text-gray-500 text-xs font-semibold uppercase tracking-wider rounded-md border border-gray-200">Test Result: Similar to chemical</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-5 bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                            <div class="w-14 h-14 rounded-xl bg-gray-100 text-gray-700 flex items-center justify-center text-xl font-bold font-heading">P</div>
+                            <div>
+                                <strong class="block text-xl text-gray-900 mb-1">Phosphorus</strong>
+                                <p class="text-gray-500 font-light mb-3 text-sm">Supports plant development.</p>
+                                <span class="inline-block px-3 py-1 bg-gray-50 text-gray-500 text-xs font-semibold uppercase tracking-wider rounded-md border border-gray-200">Test Result: Similar to chemical</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-5 bg-brand-50 p-6 rounded-2xl border border-brand-200 transform hover:-translate-y-1 transition-transform shadow-md">
+                            <div class="w-14 h-14 rounded-xl bg-brand-500 text-white flex items-center justify-center text-xl font-bold font-heading shadow-[0_0_15px_rgba(34,197,94,0.4)]">K</div>
+                            <div>
+                                <strong class="block text-xl text-brand-700 mb-1">Potassium</strong>
+                                <p class="text-brand-600 font-light mb-3 text-sm">Supports plant strength and fruit development.</p>
+                                <span class="inline-block px-3 py-1 bg-white text-brand-600 text-xs font-bold uppercase tracking-wider rounded-md border border-brand-200 shadow-sm">Test Result: Higher with AMEEX Grow.</span>
+                            </div>
+                        </div>
+                        <div class="p-5 bg-white text-gray-500 rounded-2xl text-center text-sm font-light border border-gray-200 shadow-sm mt-4">
+                            <strong class="text-gray-800">Note:</strong> Water-only treatment yielded the lowest overall N-P-K.
+                        </div>
+                    </div>
+
+                    <div class="w-full lg:w-2/3 flex flex-col">
+                        <div class="bg-white rounded-[2rem] border border-gray-100 p-8 shadow-md flex items-center justify-center relative group overflow-hidden w-full h-full min-h-[400px]">
+                            <img src="assets/result_chart_soil_npk_1.webp" alt="Soil Data 1" class="w-full h-full object-contain max-h-[600px] group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OVERALL FINDING BANNER -->
+            <div class="bento-card overflow-hidden reveal-section relative bg-white border-accent-100 shadow-xl overall-finding-card">
+                <div class="absolute top-0 right-0 w-[60%] h-full bg-gradient-to-l from-accent-50/80 to-transparent pointer-events-none"></div>
+                <div class="absolute bottom-0 left-0 w-[40%] h-full bg-gradient-to-r from-brand-50/80 to-transparent pointer-events-none"></div>
+                
+                <div class="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 text-center">
+                    <h3 class="text-accent-500 font-bold uppercase tracking-[0.4em] text-sm mb-12">Overall Finding</h3>
+                    
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 mb-16">
+                        <div class="bg-white p-8 lg:p-10 rounded-3xl min-w-[280px] border border-gray-100 shadow-md">
+                            <span class="block text-3xl font-bold text-gray-900 mb-3 font-heading">Vegetative Growth</span>
+                            <span class="text-gray-500 text-sm tracking-widest uppercase">(Height + Leaves)</span>
+                        </div>
+                        
+                        <span class="text-5xl text-accent-400 font-light flex items-center justify-center w-16 h-16 rounded-full bg-white shadow-sm border border-gray-100 flex-shrink-0">+</span>
+                        
+                        <div class="bg-white p-8 lg:p-10 rounded-3xl min-w-[280px] border border-gray-100 shadow-md">
+                            <span class="block text-3xl font-bold text-gray-900 mb-3 font-heading">Reproductive Growth</span>
+                            <span class="text-gray-500 text-sm tracking-widest uppercase">(Flowers + Fruits)</span>
+                        </div>
+                    </div>
+                    
+                    <p class="main-finding-text font-heading font-bold text-gray-900 leading-tight max-w-4xl mx-auto drop-shadow-sm">
+                        AMEEX Grow-treated plants showed better overall growth.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="conclusion" class="pt-24 pb-0 relative bg-surface-100 border-t border-gray-200">
+        <div class="container-content px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="mb-20 reveal-section">
+                <div class="text-center mb-16">
+                    <h2 class="text-sm font-bold tracking-[0.3em] text-brand-500 uppercase mb-4">Phase 04</h2>
+                    <h3 class="text-4xl md:text-5xl font-heading font-bold text-gray-900 mb-6">Conclusion</h3>
+                    <div class="w-24 h-1 bg-gradient-to-r from-transparent via-brand-500 to-transparent mx-auto rounded-full"></div>
+                </div>
+                
+                <div class="bento-card overflow-hidden min-h-[60vh] flex items-center p-0 group bg-white">
+                    <div class="flex flex-col lg:flex-row w-full h-full relative">
+                        <div class="w-full lg:w-1/2 h-64 lg:h-auto relative overflow-hidden bg-gray-100">
+                            <img src="assets/conclusion_harvest_success.webp" alt="Conclusion" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s]">
+                            <div class="absolute inset-0 bg-gradient-to-r from-transparent to-white hidden lg:block opacity-60"></div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white block lg:hidden opacity-60"></div>
+                        </div>
+                        
+                        <div class="w-full lg:w-1/2 p-8 lg:p-16 flex flex-col justify-center bg-white z-10 shadow-[-20px_0_40px_rgba(0,0,0,0.05)]">
+                            <p class="text-accent-500 font-bold tracking-[0.2em] uppercase mb-8 text-xl">AMEEX Grow:</p>
+                            <div class="space-y-4 mb-12">
+                                <div class="flex items-center gap-6 p-4 rounded-xl bg-gray-50 border border-gray-100 hover:border-brand-200 hover:bg-brand-50 transition-colors">
+                                    <div class="w-10 h-10 rounded-full bg-brand-100 flex items-center justify-center flex-shrink-0 border border-brand-200">
+                                        <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <span class="text-gray-700 font-medium">Uses household organic waste</span>
+                                </div>
+                                <div class="flex items-center gap-6 p-4 rounded-xl bg-gray-50 border border-gray-100 hover:border-brand-200 hover:bg-brand-50 transition-colors">
+                                    <div class="w-10 h-10 rounded-full bg-brand-100 flex items-center justify-center flex-shrink-0 border border-brand-200">
+                                        <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <span class="text-gray-700 font-medium">Provides N, P and K</span>
+                                </div>
+                                <div class="flex items-center gap-6 p-4 rounded-xl bg-gray-50 border border-gray-100 hover:border-brand-200 hover:bg-brand-50 transition-colors">
+                                    <div class="w-10 h-10 rounded-full bg-brand-100 flex items-center justify-center flex-shrink-0 border border-brand-200">
+                                        <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <span class="text-gray-700 font-medium">Supports eggplant growth</span>
+                                </div>
+                                <div class="flex items-center gap-6 p-4 rounded-xl bg-gray-50 border border-gray-100 hover:border-brand-200 hover:bg-brand-50 transition-colors">
+                                    <div class="w-10 h-10 rounded-full bg-brand-100 flex items-center justify-center flex-shrink-0 border border-brand-200">
+                                        <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <span class="text-gray-700 font-medium">Improves flowering and fruit development</span>
+                                </div>
+                            </div>
+                            
+                            <div class="p-6 lg:p-8 rounded-2xl border border-accent-200 bg-accent-50 relative overflow-hidden">
+                                <div class="absolute top-0 left-0 w-1.5 h-full bg-accent-400"></div>
+                                <h4 class="font-bold text-accent-600 mb-3 tracking-[0.2em] uppercase text-xs">Final Statement</h4>
+                                <p class="text-gray-800 italic text-xl lg:text-2xl font-light leading-snug">"AMEEX Grow shows potential as a sustainable fertilizer made from household organic waste."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="w-full mt-24 reveal-section">
+            <div class="text-center mb-16 px-4">
+                <h2 class="text-sm font-bold tracking-[0.3em] text-accent-500 uppercase mb-4">Phase 05</h2>
+                <h3 class="text-4xl md:text-5xl font-heading font-bold text-gray-900 mb-6">Recommendation</h3>
+                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-accent-500 to-transparent mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="future-research-hero group parallax-bg">
+                <div class="absolute inset-0 bg-fixed bg-cover bg-center transition-transform duration-[2s] group-hover:scale-105" style="background-image: url('assets/recommend_future_scale.webp');"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent pointer-events-none"></div>
+                <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>
+                <div class="max-w-7xl mx-auto h-full relative pointer-events-none">
+                     <h3 class="absolute bottom-10 left-4 sm:left-6 lg:left-8 text-4xl md:text-6xl lg:text-7xl font-bold font-heading text-white drop-shadow-md">Future Research</h3>
+                </div>
+            </div>
+
+            <div class="future-research-content">
+                <div class="bg-white rounded-[2.5rem] p-8 lg:p-16 shadow-elegant border border-gray-100">
+                    <div class="grid lg:grid-cols-3 gap-8 mb-16">
+                        <div class="bg-gray-50 p-8 rounded-3xl hover:bg-white hover:shadow-lg transition-all border border-gray-100">
+                            <div class="w-16 h-16 bg-accent-50 text-accent-500 rounded-2xl flex items-center justify-center mb-6 border border-accent-100">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            </div>
+                            <strong class="block text-gray-900 text-xl mb-3 font-heading">Larger sample size</strong>
+                            <p class="text-gray-600 font-light text-sm">Test more plants to ensure statistical validity and robustness of results.</p>
+                        </div>
+
+                        <div class="bg-gray-50 p-8 rounded-3xl hover:bg-white hover:shadow-lg transition-all border border-gray-100">
+                            <div class="w-16 h-16 bg-brand-50 text-brand-500 rounded-2xl flex items-center justify-center mb-6 border border-brand-100">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <strong class="block text-gray-900 text-xl mb-3 font-heading">More plant species</strong>
+                            <p class="text-gray-600 font-light text-sm">Test on other crops to see broad applicability beyond purple eggplants.</p>
+                        </div>
+
+                        <div class="bg-gray-50 p-8 rounded-3xl hover:bg-white hover:shadow-lg transition-all border border-gray-100">
+                            <div class="w-16 h-16 bg-accent-50 text-accent-500 rounded-2xl flex items-center justify-center mb-6 border border-accent-100">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                            </div>
+                            <strong class="block text-gray-900 text-xl mb-3 font-heading">Different media</strong>
+                            <p class="text-gray-600 font-light text-sm">Test in different soil conditions and climates for comprehensive evaluation.</p>
+                        </div>
+                    </div>
+
+                    <div class="text-center bg-gradient-to-r from-brand-50 to-brand-100/50 rounded-[2rem] p-10 relative overflow-hidden border border-brand-200 shadow-sm">
+                        <h4 class="font-bold text-brand-600 tracking-[0.3em] uppercase text-xs mb-4 relative z-10">Ultimate Goal</h4>
+                        <p class="text-2xl md:text-4xl font-heading font-bold text-gray-900 relative z-10 leading-tight">Validate AMEEX Grow for wider agricultural applications.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white border-t border-gray-100 reveal-section">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-sm font-bold tracking-[0.3em] text-gray-400 uppercase mb-12">References</h2>
+            <div class="text-sm text-gray-600 space-y-4 max-w-4xl mx-auto text-left font-light">
+                
+                <a href="https://scholar.google.com/scholar?q=Dampak+Penggunaan+Pestisida+Kimia+Terhadap+Kualitas+Tanah+dan+Air+Sungai+di+Daerah+Pertanian" target="_blank" class="block bg-gray-50 p-5 rounded-xl border border-gray-200 hover:border-accent-400 hover:bg-white hover:shadow-md hover:text-gray-900 transition-all transform hover:-translate-y-1 group">
+                    <span class="flex items-center justify-between">
+                        <span class="pr-4 leading-relaxed">[1] Dhaifullah, A. D., Khayumi, B. I., Legawa, D. T., Ansyah, M. K. A., & Radians, D. O. Dampak Penggunaan Pestisida Kimia Terhadap Kualitas Tanah dan Air Sungai di Daerah Pertanian. Venus: Jurnal Publikasi Rumpun Ilmu Teknik, 2(2) (2024).</span>
+                        <svg class="w-5 h-5 text-accent-400 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </span>
+                </a>
+                
+                <a href="https://scholar.google.com/scholar?q=Efektivitas+Pemberian+Eco+Enzyme+Kulit+Buah+sebagai+Pupuk+Organik+Cair+terhadap+Pertumbuhan+Tanaman" target="_blank" class="block bg-gray-50 p-5 rounded-xl border border-gray-200 hover:border-accent-400 hover:bg-white hover:shadow-md hover:text-gray-900 transition-all transform hover:-translate-y-1 group">
+                    <span class="flex items-center justify-between">
+                        <span class="pr-4 leading-relaxed">[2] Hidayah, R., Wibowo, A., & Prasetyo, D. Efektivitas Pemberian Eco Enzyme Kulit Buah sebagai Pupuk Organik Cair terhadap Pertumbuhan Tanaman. LenteraBio. 12(1) (2023).</span>
+                        <svg class="w-5 h-5 text-accent-400 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </span>
+                </a>
+                
+                <a href="https://scholar.google.com/scholar?q=Edukasi+Petani+Melalui+Pemanfaatan+Air+Leri+sebagai+Pupuk+Organik+Cair" target="_blank" class="block bg-gray-50 p-5 rounded-xl border border-gray-200 hover:border-accent-400 hover:bg-white hover:shadow-md hover:text-gray-900 transition-all transform hover:-translate-y-1 group">
+                    <span class="flex items-center justify-between">
+                        <span class="pr-4 leading-relaxed">[3] Yudha, D. A., Ningsih, F. S., Kristina, W. S., & Nurlita, I. Edukasi Petani Melalui Pemanfaatan Air Leri sebagai Pupuk Organik Cair. Community Development Journal, 6(4) (2025).</span>
+                        <svg class="w-5 h-5 text-accent-400 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </span>
+                </a>
+                
+                <a href="https://scholar.google.com/scholar?q=Pemanfaatan+Limbah+Kulit+Bawang+Merah+sebagai+Pupuk+Organik+Cair+untuk+Mendukung+Pertanian+Ramah+Lingkungan" target="_blank" class="block bg-gray-50 p-5 rounded-xl border border-gray-200 hover:border-accent-400 hover:bg-white hover:shadow-md hover:text-gray-900 transition-all transform hover:-translate-y-1 group">
+                    <span class="flex items-center justify-between">
+                        <span class="pr-4 leading-relaxed">[4] Ratih, P. D., Mulyani, P. D. A., Atmoko, D., Fiana, O. S., & Apriliana, S. Pemanfaatan Limbah Kulit Bawang Merah sebagai Pupuk Organik Cair untuk Mendukung Pertanian Ramah Lingkungan. JABI: Jurnal Abdimas Bhakti Indonesia. 6(2) (2025).</span>
+                        <svg class="w-5 h-5 text-accent-400 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </span>
+                </a>
+
+                <a href="https://scholar.google.com/scholar?q=Eksplorasi+Bawang+Putih+sebagai+Bahan+Ramah+Lingkungan+untuk+Pertanian:+Studi+Literatur" target="_blank" class="block bg-gray-50 p-5 rounded-xl border border-gray-200 hover:border-accent-400 hover:bg-white hover:shadow-md hover:text-gray-900 transition-all transform hover:-translate-y-1 group">
+                    <span class="flex items-center justify-between">
+                        <span class="pr-4 leading-relaxed">[5] Sumarni, R. A., Okyranida, I. Y., & Burhanudin. Eksplorasi Bawang Putih sebagai Bahan Ramah Lingkungan untuk Pertanian: Studi Literatur. Prosiding Seminar Nasional Sains (SINASIS), 5(1) (2024).</span>
+                        <svg class="w-5 h-5 text-accent-400 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </span>
+                </a>
+                
+                <a href="https://scholar.google.com/scholar?q=Kombinasi+Limbah+Kulit+Bawang+Merah+Dan+Cangkang+Telur+Sebagai+Pupuk+Kompos+Pada+Tanaman+Sayuran" target="_blank" class="block bg-gray-50 p-5 rounded-xl border border-gray-200 hover:border-accent-400 hover:bg-white hover:shadow-md hover:text-gray-900 transition-all transform hover:-translate-y-1 group">
+                    <span class="flex items-center justify-between">
+                        <span class="pr-4 leading-relaxed">[6] Rukmana, I., Andi Irga Satrawati Taslim, & Fatmawati Ramli. Kombinasi Limbah Kulit Bawang Merah Dan Cangkang Telur Sebagai Pupuk Kompos Pada Tanaman Sayuran. Jurnal Pengabdian Magister Pendidikan IPA, 7(4) (2024).</span>
+                        <svg class="w-5 h-5 text-accent-400 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </span>
+                </a>
+                
+                <a href="https://scholar.google.com/scholar?q=Pengaruh+Pemberian+Pupuk+Organik+Cair+Terhadap+Pertumbuhan+Dan+Hasil+Tanaman+Terung+Ungu+(Solanum+melongena+L.)" target="_blank" class="block bg-gray-50 p-5 rounded-xl border border-gray-200 hover:border-accent-400 hover:bg-white hover:shadow-md hover:text-gray-900 transition-all transform hover:-translate-y-1 group">
+                    <span class="flex items-center justify-between">
+                        <span class="pr-4 leading-relaxed">[7] Arnoldi, R. Pengaruh Pemberian Pupuk Organik Cair Terhadap Pertumbuhan Dan Hasil Tanaman Terung Ungu (Solanum melongena L.). Sarjana thesis, Universitas Tadulako. (2023).</span>
+                        <svg class="w-5 h-5 text-accent-400 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </span>
+                </a>
+                
+                <a href="https://scholar.google.com/scholar?q=Respon+Pertumbuhan+dan+Produksi+Tanaman+Terung+Ungu+terhadap+Berbagai+Konsentrasi+dan+Waktu+Pemberian+POC+MOL+Limbah+Ikan+Nila" target="_blank" class="block bg-gray-50 p-5 rounded-xl border border-gray-200 hover:border-accent-400 hover:bg-white hover:shadow-md hover:text-gray-900 transition-all transform hover:-translate-y-1 group">
+                    <span class="flex items-center justify-between">
+                        <span class="pr-4 leading-relaxed">[8] Noviyanti, V., Haris, A., & Nontji, M. Respon Pertumbuhan dan Produksi Tanaman Terung Ungu (Solanum melongena L.) terhadap Berbagai Konsentrasi dan Waktu Pemberian POC MOL Limbah Ikan Nila. Program Studi Agroteknologi, Universitas Muslim Indonesia, Makassar. (2021).</span>
+                        <svg class="w-5 h-5 text-accent-400 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </span>
+                </a>
+                
+                <a href="https://scholar.google.com/scholar?q=Pengaruh+Pupuk+Organik+Cair+dari+Limbah+Kulit+Buah+dan+Daun+sebagai+Substitusi+Pupuk+Kimia+terhadap+Pertumbuhan+dan+Produksi+Kedelai" target="_blank" class="block bg-gray-50 p-5 rounded-xl border border-gray-200 hover:border-accent-400 hover:bg-white hover:shadow-md hover:text-gray-900 transition-all transform hover:-translate-y-1 group">
+                    <span class="flex items-center justify-between">
+                        <span class="pr-4 leading-relaxed">[9] Anggraeni, L., Anwar, N. A., Damanhuri, D., Robi’in, R., & Zubaidi, T. Pengaruh Pupuk Organik Cair dari Limbah Kulit Buah dan Daun sebagai Substitusi Pupuk Kimia terhadap Pertumbuhan dan Produksi Kedelai. Vegetalika, 13(2) (2024).</span>
+                        <svg class="w-5 h-5 text-accent-400 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-50 text-gray-500 py-16 text-center border-t border-gray-200">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="font-heading font-bold text-2xl text-gray-900 tracking-widest uppercase flex items-center justify-center gap-4 mb-6">
+                <svg class="w-6 h-6 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
+                AMEEX GROW
+            </div>
+            <p class="mb-4 text-sm font-light tracking-wide text-gray-600">SMP Negeri 1 Banjarmasin, South Kalimantan, Indonesia</p>
+            <p class="text-xs uppercase tracking-[0.2em] text-gray-400">&copy; 2026 WASISC Competition Team. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('[data-slide]');
+            const indicators = document.querySelectorAll('.slide-indicator');
+            let currentSlide = 0;
+            let slideInterval;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    if (i === index) {
+                        slide.classList.remove('slide-inactive');
+                        slide.classList.add('slide-active');
+                    } else {
+                        slide.classList.remove('slide-active');
+                        slide.classList.add('slide-inactive');
+                    }
+                });
+                
+                indicators.forEach((indicator, i) => {
+                    if (i === index) {
+                        indicator.classList.remove('bg-white/50', 'hover:bg-white');
+                        indicator.classList.add('bg-accent-500');
+                    } else {
+                        indicator.classList.add('bg-white/50', 'hover:bg-white');
+                        indicator.classList.remove('bg-accent-500');
+                    }
+                });
+                currentSlide = index;
+            }
+
+            function nextSlide() {
+                let next = (currentSlide + 1) % slides.length;
+                showSlide(next);
+            }
+
+            function prevSlide() {
+                let prev = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(prev);
+            }
+
+            document.getElementById('next-slide').addEventListener('click', () => {
+                nextSlide();
+                resetInterval();
+            });
+
+            document.getElementById('prev-slide').addEventListener('click', () => {
+                prevSlide();
+                resetInterval();
+            });
+
+            indicators.forEach((indicator, i) => {
+                indicator.addEventListener('click', () => {
+                    showSlide(i);
+                    resetInterval();
+                });
+            });
+
+            function resetInterval() {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(nextSlide, 7000); 
+            }
+
+            slideInterval = setInterval(nextSlide, 7000);
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal-section:not(.visible)').forEach(section => {
+                observer.observe(section);
+            });
+            
+            const nav = document.querySelector('nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('bg-white/90', 'shadow-md');
+                    nav.classList.remove('bg-white/80', 'shadow-sm');
+                } else {
+                    nav.classList.add('bg-white/80', 'shadow-sm');
+                    nav.classList.remove('bg-white/90', 'shadow-md');
+                }
+            });
+
+            const parallaxElements = document.querySelectorAll('.parallax-element');
+            window.addEventListener('scroll', () => {
+                let scrollPosition = window.pageYOffset;
+                parallaxElements.forEach((el) => {
+                    let speed = parseFloat(el.getAttribute('data-speed')) || 0.5;
+                    el.style.transform = `translateY(${scrollPosition * speed}px)`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+```eof
