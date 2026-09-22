@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMEEX GROW - Sustainable Agriculture</title>
-    <meta name="description" content="Environmentally Friendly Organic Liquid Fertilizer from Eco Enzyme and Household Waste for Sustainable Agriculture">
+    <meta name="description" content="liquid organic fertilizer for sustainable agriculture.">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -73,6 +73,43 @@
         .reveal-section { opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal-section.visible { opacity: 1; transform: translateY(0); }
         .parallax-element { transition: transform 0.1s cubic-bezier(0.0, 0.0, 0.2, 1); }
+
+        /* Custom Scrollbar */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        #lightbox { transition: opacity 0.3s ease; }
+
+        /* Gallery specific styles */
+        .gallery-main-view {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .gallery-thumb.active {
+            border-color: var(--coral, #FF7F50);
+            transform: scale(1.05);
+            opacity: 1;
+        }
+        .gallery-thumb {
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+        .gallery-thumb:hover {
+            opacity: 1;
+        }
+        
+        /* Auto-scroll animation for thumbnails */
+        @keyframes scroll-thumbnails {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Scrolls half width since content is duplicated */
+        }
+        .thumbnail-track {
+            display: flex;
+            gap: 1rem;
+            width: max-content;
+            animation: scroll-thumbnails 60s linear infinite;
+        }
+        .thumbnail-container:hover .thumbnail-track {
+            animation-play-state: paused;
+        }
     </style>
 
 <style id="immersive-redesign">
@@ -100,14 +137,13 @@ section.relative.w-full.h-screen{ height:100svh!important; min-height:720px; }
 #hero-slider > div{ transform:scale(1.035); transition:opacity 1.8s ease, transform 8s cubic-bezier(.2,.7,.2,1); background-position:center!important; }
 #hero-slider .slide-active{transform:scale(1.07)}
 
-/* HERO SLIDER OVERLAY (Dibuat Dark Green Linear Gradient) */
+/* HERO SLIDER OVERLAY */
 #hero-slider:after{
   content:"";
   position:absolute;
   inset:0;
   z-index:5;
   pointer-events:none;
-  /* Menggunakan nilai RGBA hijau gelap (#14532d setara rgba(20,83,45,x)) */
   background: linear-gradient(180deg, rgba(20,83,45,0.85) 0%, rgba(20,83,45,0.6) 50%, rgba(0,0,0,0.95) 100%);
 }
 
@@ -121,7 +157,6 @@ section.relative.w-full.h-screen h1{
     line-height:.96!important; 
     letter-spacing:-.055em!important; 
     max-width:1100px; 
-    /* Shadow dipertebal agar menonjol */
     text-shadow: 0 4px 15px rgba(0,0,0,0.9), 0 10px 40px rgba(0,0,0,0.7) !important; 
 }
 section.relative.w-full.h-screen h1 span{ background-image:linear-gradient(90deg,#fff 0%,#b7f7c9 50%,#FFB094 100%)!important; }
@@ -129,7 +164,6 @@ section.relative.w-full.h-screen p{
     color:rgba(255,255,255,.95)!important; 
     font-size:clamp(1rem,1.7vw,1.45rem)!important; 
     max-width:700px!important; 
-    /* Shadow dipertebal agar menonjol */
     text-shadow: 0 2px 10px rgba(0,0,0,0.9), 0 5px 20px rgba(0,0,0,0.6) !important; 
 }
 
@@ -269,7 +303,7 @@ footer{ padding-top:90px!important; padding-bottom:90px!important; }
                 <div class="flex-shrink-0 flex items-center">
                     <a href="#" class="font-heading font-bold text-xl md:text-2xl tracking-tighter text-gray-900 flex items-center gap-4 group">
                         <div class="w-12 h-12 md:w-14 md:h-14 bg-white rounded-xl flex flex-col items-center justify-center overflow-hidden relative transition-transform group-hover:scale-105 border border-gray-100 shadow-sm">
-                            <img src="assets/ameex_logo_nav.webp" alt="AMEEX Logo" class="absolute inset-2 w-[calc(100%-1rem)] h-[calc(100%-1rem)] object-contain drop-shadow-sm">
+                            <img src="assets/ameex_logo_nav.webp" alt="AMEEX Logo" class="absolute inset-2 w-[calc(100%-1rem)] h-[calc(100%-1rem)] object-contain drop-shadow-sm" onerror="this.src='https://placehold.co/100x100/22c55e/ffffff?text=LOGO'">
                         </div>
                         <span class="tracking-widest uppercase">AMEEX GROW</span>
                     </a>
@@ -278,6 +312,7 @@ footer{ padding-top:90px!important; padding-bottom:90px!important; }
                     <a href="#introduction" class="text-gray-500 hover:text-accent-400 font-medium tracking-wide transition-colors text-sm uppercase">Intro</a>
                     <a href="#method" class="text-gray-500 hover:text-accent-400 font-medium tracking-wide transition-colors text-sm uppercase">Method</a>
                     <a href="#results" class="text-gray-500 hover:text-accent-400 font-medium tracking-wide transition-colors text-sm uppercase">Results</a>
+                    <a href="#gallery" class="text-gray-500 hover:text-accent-400 font-medium tracking-wide transition-colors text-sm uppercase">Gallery</a>
                     <a href="#conclusion" class="text-gray-500 hover:text-accent-400 font-medium tracking-wide transition-colors text-sm uppercase">Conclusion</a>
                 </div>
             </div>
@@ -285,9 +320,8 @@ footer{ padding-top:90px!important; padding-bottom:90px!important; }
     </nav>
 
     <section class="relative w-full h-screen overflow-hidden group bg-surface-50 flex items-center justify-center">
-        <!-- Overlay HTML lebih gelap untuk berjaga-jaga selain overlay CSS -->
-	<div class="absolute inset-0 bg-brand-900/60 z-10 pointer-events-none"></div>
-	<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-brand-900/50 to-transparent z-10 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-brand-900/60 z-10 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-brand-900/50 to-transparent z-10 pointer-events-none"></div>
         
         <div id="hero-slider" class="absolute inset-0 w-full h-full parallax-bg z-0">
             <div class="absolute inset-0 slide-active bg-fixed bg-cover bg-center" style="background-image: url('assets/hero_farming_01.webp');" data-slide="0"></div>
@@ -298,18 +332,16 @@ footer{ padding-top:90px!important; padding-bottom:90px!important; }
         <div class="relative z-20 flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8 w-full max-w-5xl mx-auto pt-20">
             
             <div class="flex flex-col items-center mb-6">
-                <!-- Drop shadow pada badge -->
                 <span class="inline-block py-1.5 px-6 rounded-full bg-accent-500 text-white font-bold text-xs md:text-sm tracking-widest mb-3 shadow-lg drop-shadow-md">WASISC 2026</span>
                 <span class="inline-block px-6 py-2 bg-white/20 backdrop-blur-md rounded-full text-white text-xs md:text-sm tracking-wide border border-white/30 drop-shadow-md font-medium">World Agriculture, Strategic Studies & Innovation Science Competition</span>
             </div>
             
             <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] mb-6 font-heading w-full">
-                Environmentally Friendly <br/>
-                Organic Liquid Fertilizer
+                liquid organic fertilizer for sustainable agriculture.
             </h1>
             
             <p class="text-lg md:text-2xl text-gray-100 mb-10 leading-relaxed font-light max-w-3xl">
-                From Eco Enzyme and Household Waste for Sustainable Agriculture
+                From Eco Enzyme and Household Waste
             </p>
             
             <div class="w-full max-w-2xl bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-6 md:p-8 mt-4 shadow-2xl drop-shadow-2xl">
@@ -347,14 +379,26 @@ footer{ padding-top:90px!important; padding-bottom:90px!important; }
             <p class="text-center text-xs font-semibold text-gray-400 uppercase tracking-[0.3em] mb-10">Supported By & Participated In</p>
             <div class="flex flex-wrap justify-center gap-12 md:gap-24 items-center transition-opacity duration-500">
                 <div class="w-32 md:w-48 h-16 md:h-24 relative overflow-hidden group hover:scale-105 transition-transform duration-500">
-                    <img src="assets/sponsor_logo_organizer.webp" alt="Organizer Logo" class="absolute inset-0 w-full h-full object-contain">
+                    <img src="assets/sponsor_logo_organizer.webp" alt="Organizer Logo" class="absolute inset-0 w-full h-full object-contain" onerror="this.src='https://placehold.co/200x100/f4f4f5/334155?text=Sponsor'">
                 </div>
                 <div class="w-32 md:w-48 h-16 md:h-24 relative overflow-hidden group hover:scale-105 transition-transform duration-500">
-                    <img src="assets/event_logo_wasisc_2026.webp" alt="WASISC Logo" class="absolute inset-0 w-full h-full object-contain">
+                    <img src="assets/event_logo_wasisc_2026.webp" alt="WASISC Logo" class="absolute inset-0 w-full h-full object-contain" onerror="this.src='https://placehold.co/200x100/f4f4f5/334155?text=WASISC'">
                 </div>
                 <div class="w-32 md:w-48 h-16 md:h-24 relative overflow-hidden group hover:scale-105 transition-transform duration-500">
-                    <img src="assets/school_logo_smpn1.webp" alt="School Logo" class="absolute inset-0 w-full h-full object-contain">
+                    <img src="assets/school_logo_smpn1.webp" alt="School Logo" class="absolute inset-0 w-full h-full object-contain" onerror="this.src='https://placehold.co/200x100/f4f4f5/334155?text=School'">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white reveal-section border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h3 class="text-3xl font-bold font-heading text-gray-900">Research Team</h3>
+                <div class="w-16 h-1 bg-gradient-to-r from-transparent via-brand-500 to-transparent mx-auto rounded-full mt-4"></div>
+            </div>
+            <div class="rounded-[2.5rem] overflow-hidden shadow-2xl border border-gray-100 group">
+                <img src="assets/team.webp" alt="Tim Penelitian" class="w-full h-auto object-cover cursor-pointer hover:scale-105 transition-transform duration-1000" onerror="this.src='https://placehold.co/1000x500/22c55e/ffffff?text=Team+Photo'">
             </div>
         </div>
     </section>
@@ -387,7 +431,7 @@ footer{ padding-top:90px!important; padding-bottom:90px!important; }
                         </p>
                     </div>
                     <div class="mt-8 rounded-2xl overflow-hidden h-48 relative border border-gray-100 shadow-inner">
-                         <img src="assets/intro_prob_waste_chemical.webp" alt="The Problem" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+                         <img src="assets/intro_prob_waste_chemical.webp" alt="The Problem" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" onerror="this.src='https://placehold.co/800x400/f4f4f5/334155?text=Problem+Image'">
                     </div>
                 </div>
 
@@ -465,7 +509,7 @@ footer{ padding-top:90px!important; padding-bottom:90px!important; }
                         <h3 class="text-2xl font-bold font-heading text-gray-900">Design</h3>
                     </div>
                     <div class="w-full h-48 rounded-2xl overflow-hidden mb-8 relative border border-gray-100 shadow-inner">
-                        <img src="assets/method_design_location.webp" alt="Research Design" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <img src="assets/method_design_location.webp" alt="Research Design" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" onerror="this.src='https://placehold.co/400x300/f4f4f5/334155?text=Location'">
                     </div>
                     <ul class="space-y-4 flex-grow">
                         <li class="flex flex-col gap-1 border-b border-gray-100 pb-3"><strong class="text-xs uppercase tracking-wider text-accent-400">Period</strong> <span class="text-gray-600 font-medium">18 Feb - 7 Sep 2026</span></li>
@@ -482,7 +526,7 @@ footer{ padding-top:90px!important; padding-bottom:90px!important; }
                         <h3 class="text-2xl font-bold font-heading text-gray-900">Preparation</h3>
                     </div>
                     <div class="w-full h-48 rounded-2xl overflow-hidden mb-8 relative border border-gray-100 shadow-inner">
-                        <img src="assets/method_prep_fermentation.webp" alt="Preparation" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <img src="assets/method_prep_fermentation.webp" alt="Preparation" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" onerror="this.src='https://placehold.co/400x300/f4f4f5/334155?text=Preparation'">
                     </div>
                     <div class="space-y-4 flex-grow">
                         <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
@@ -504,7 +548,7 @@ footer{ padding-top:90px!important; padding-bottom:90px!important; }
                         <h3 class="text-2xl font-bold font-heading text-gray-900">Formulation</h3>
                     </div>
                     <div class="w-full h-48 rounded-2xl overflow-hidden mb-8 relative border border-white shadow-inner">
-                        <img src="assets/method_form_ratio.webp" alt="Final Formulation" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <img src="assets/method_form_ratio.webp" alt="Final Formulation" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" onerror="this.src='https://placehold.co/400x300/f4f4f5/334155?text=Formulation'">
                     </div>
                     <div class="flex-grow flex flex-col justify-center">
                         <div class="flex items-center justify-between bg-white p-5 rounded-2xl border border-gray-100 mb-4 shadow-sm">
@@ -565,6 +609,40 @@ footer{ padding-top:90px!important; padding-bottom:90px!important; }
         </div>
     </section>
 
+    <section id="gallery" class="py-24 relative bg-zinc-900 text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-center reveal-section">
+            <h2 class="text-sm font-bold tracking-[0.3em] text-accent-400 uppercase mb-4">Documentation</h2>
+            <h3 class="text-4xl md:text-5xl font-heading font-bold text-white mb-6">Activity Gallery</h3>
+            <div class="w-24 h-1 bg-gradient-to-r from-transparent via-accent-400 to-transparent mx-auto rounded-full"></div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 reveal-section relative">
+            <!-- Main Gallery View -->
+            <div class="relative w-full h-[50vh] md:h-[70vh] flex items-center justify-center bg-black/50 rounded-3xl overflow-hidden mb-8 border border-white/10 shadow-2xl">
+                <button id="gallery-prev" class="absolute left-4 z-20 p-3 rounded-full bg-black/50 border border-white/20 text-white hover:bg-accent-500 hover:border-accent-500 transition-all backdrop-blur-sm shadow-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                
+                <img id="gallery-main-img" src="assets/galeri_1.webp" onerror="this.src='https://placehold.co/1200x800/22c55e/ffffff?text=Gallery+Main'" alt="Main Gallery View" class="w-full h-full object-contain gallery-main-view">
+                
+                <button id="gallery-next" class="absolute right-4 z-20 p-3 rounded-full bg-black/50 border border-white/20 text-white hover:bg-accent-500 hover:border-accent-500 transition-all backdrop-blur-sm shadow-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+            </div>
+
+            <!-- Auto-scrolling Thumbnail Strip -->
+            <div class="w-full overflow-hidden thumbnail-container py-4 relative">
+                <!-- Fade edges for aesthetic -->
+                <div class="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-zinc-900 to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-zinc-900 to-transparent z-10 pointer-events-none"></div>
+                
+                <div id="gallery-thumbnails" class="thumbnail-track cursor-grab active:cursor-grabbing">
+                    <!-- Thumbnails will be generated by JS. We will generate two sets for infinite scroll effect -->
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="results" class="py-24 relative bg-white">
         <div class="container-content px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20 reveal-section">
@@ -576,7 +654,7 @@ footer{ padding-top:90px!important; padding-bottom:90px!important; }
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
                 <div class="bento-card p-0 flex flex-col reveal-section group bg-white border border-gray-100">
                     <div class="h-72 bg-gray-50 relative overflow-hidden border-b border-gray-100 p-6 flex items-center justify-center">
-                        <img src="assets/result_chart_plant_height.webp" alt="Plant Height Data" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700">
+                        <img src="assets/result_chart_plant_height.webp" alt="Plant Height Data" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/400x300/f4f4f5/334155?text=Chart'">
                     </div>
                     <div class="p-8">
                         <h3 class="text-2xl font-bold font-heading text-gray-900 mb-3">Plant Height</h3>
@@ -590,7 +668,7 @@ footer{ padding-top:90px!important; padding-bottom:90px!important; }
 
                 <div class="bento-card p-0 flex flex-col reveal-section group bg-white border border-gray-100">
                     <div class="h-72 bg-gray-50 relative overflow-hidden border-b border-gray-100 p-6 flex items-center justify-center">
-                        <img src="assets/result_chart_leaf_count.webp" alt="Number of Leaves Data" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700">
+                        <img src="assets/result_chart_leaf_count.webp" alt="Number of Leaves Data" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/400x300/f4f4f5/334155?text=Chart'">
                     </div>
                     <div class="p-8">
                         <h3 class="text-2xl font-bold font-heading text-gray-900 mb-3">Number of Leaves</h3>
@@ -604,7 +682,7 @@ footer{ padding-top:90px!important; padding-bottom:90px!important; }
 
                 <div class="bento-card p-0 flex flex-col reveal-section group bg-white border border-gray-100">
                     <div class="h-72 bg-gray-50 relative overflow-hidden border-b border-gray-100 p-6 flex items-center justify-center">
-                        <img src="assets/result_chart_flower_count.webp" alt="Number of Flowers Data" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700">
+                        <img src="assets/result_chart_flower_count.webp" alt="Number of Flowers Data" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/400x300/f4f4f5/334155?text=Chart'">
                     </div>
                     <div class="p-8">
                         <h3 class="text-2xl font-bold font-heading text-gray-900 mb-3">Number of Flowers</h3>
@@ -618,7 +696,7 @@ footer{ padding-top:90px!important; padding-bottom:90px!important; }
 
                 <div class="bento-card p-0 flex flex-col reveal-section group bg-white border border-gray-100">
                     <div class="h-72 bg-gray-50 relative overflow-hidden border-b border-gray-100 p-6 flex items-center justify-center">
-                        <img src="assets/result_chart_fruit_count.webp" alt="Number of Fruits Data" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700">
+                        <img src="assets/result_chart_fruit_count.webp" alt="Number of Fruits Data" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/400x300/f4f4f5/334155?text=Chart'">
                     </div>
                     <div class="p-8">
                         <h3 class="text-2xl font-bold font-heading text-gray-900 mb-3">Number of Fruits</h3>
@@ -670,7 +748,7 @@ footer{ padding-top:90px!important; padding-bottom:90px!important; }
 
                     <div class="w-full lg:w-2/3 flex flex-col">
                         <div class="bg-white rounded-[2rem] border border-gray-100 p-8 shadow-md flex items-center justify-center relative group overflow-hidden w-full h-full min-h-[400px]">
-                            <img src="assets/result_chart_soil_npk_1.webp" alt="Soil Data 1" class="w-full h-full object-contain max-h-[600px] group-hover:scale-105 transition-transform duration-700">
+                            <img src="assets/result_chart_soil_npk_1.webp" alt="Soil Data 1" class="w-full h-full object-contain max-h-[600px] group-hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/600x400/f4f4f5/334155?text=Soil+Chart'">
                         </div>
                     </div>
                 </div>
@@ -703,6 +781,16 @@ footer{ padding-top:90px!important; padding-bottom:90px!important; }
                     </p>
                 </div>
             </div>
+
+            <div class="mt-20 mb-8 text-center reveal-section flex justify-center w-full">
+                <a href="https://drive.google.com/drive/folders/1613mJeWZ_CuzoOX2byclNb7tsVU31Uez?usp=sharing" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-center justify-center gap-4 px-10 py-5 bg-gradient-to-r from-brand-500 to-accent-500 text-white rounded-full font-heading font-bold text-xl tracking-wide overflow-hidden shadow-[0_10px_40px_rgba(34,197,94,0.4)] hover:shadow-[0_15px_50px_rgba(255,127,80,0.5)] hover:-translate-y-2 transition-all duration-300">
+                    <span class="absolute inset-0 w-full h-full rounded-full opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
+                    <svg class="w-7 h-7 relative z-10 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    <span class="relative z-10">Buka Spreadsheet Data Penelitian</span>
+                    <div class="absolute inset-0 h-full w-full bg-white/20 scale-x-0 group-hover:scale-x-100 transform origin-left transition-transform duration-500 ease-out"></div>
+                </a>
+            </div>
+
         </div>
     </section>
 
@@ -719,7 +807,7 @@ footer{ padding-top:90px!important; padding-bottom:90px!important; }
                 <div class="bento-card overflow-hidden min-h-[60vh] flex items-center p-0 group bg-white">
                     <div class="flex flex-col lg:flex-row w-full h-full relative">
                         <div class="w-full lg:w-1/2 h-64 lg:h-auto relative overflow-hidden bg-gray-100">
-                            <img src="assets/conclusion_harvest_success.webp" alt="Conclusion" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s]">
+                            <img src="assets/conclusion_harvest_success.webp" alt="Conclusion" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s]" onerror="this.src='https://placehold.co/600x800/f4f4f5/334155?text=Conclusion'">
                             <div class="absolute inset-0 bg-gradient-to-r from-transparent to-white hidden lg:block opacity-60"></div>
                             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white block lg:hidden opacity-60"></div>
                         </div>
@@ -900,6 +988,17 @@ footer{ padding-top:90px!important; padding-bottom:90px!important; }
         </div>
     </footer>
 
+    <!-- UPDATED Lightbox Element (Centered) -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 hidden flex-col items-center justify-center backdrop-blur-md opacity-0">
+        <button id="lightbox-close" class="absolute top-6 right-6 text-white hover:text-accent-400 transition-colors p-4 bg-white/10 rounded-full hover:bg-white/20 z-[110]">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <!-- Ensure the image container flexes properly to center the image -->
+        <div class="w-full h-full flex items-center justify-center p-4">
+             <img id="lightbox-img" src="" alt="Zoomed Image" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl scale-95 transition-transform duration-300">
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const slides = document.querySelectorAll('[data-slide]');
@@ -1002,8 +1101,138 @@ footer{ padding-top:90px!important; padding-bottom:90px!important; }
                     el.style.transform = `translateY(${scrollPosition * speed}px)`;
                 });
             });
+
+            // UPDATED SCRIPT: Advanced Gallery Logic
+            const galleryThumbnails = document.getElementById('gallery-thumbnails');
+            const mainGalleryImg = document.getElementById('gallery-main-img');
+            const btnPrevGallery = document.getElementById('gallery-prev');
+            const btnNextGallery = document.getElementById('gallery-next');
+            
+            let currentGalleryIndex = 1;
+            const totalGalleryImages = 33; // Sesuaikan dengan total gambar yang Anda miliki
+            let thumbnailElements = [];
+
+            if (galleryThumbnails && mainGalleryImg) {
+                // Function to create a thumbnail image element
+                const createThumbnail = (i) => {
+                    const img = document.createElement('img');
+                    img.src = `assets/galeri_${i}.webp`;
+                    // Fallback for missing images in dev
+                    img.onerror = function() { this.src = `https://placehold.co/150x100/334155/ffffff?text=Img+${i}`; };
+                    img.className = 'w-24 h-16 md:w-32 md:h-20 object-cover rounded-lg cursor-pointer gallery-thumb border-2 border-transparent';
+                    img.dataset.index = i;
+                    
+                    img.addEventListener('click', (e) => {
+                        // Prevent lightbox from opening on thumbnail click
+                        e.stopPropagation(); 
+                        updateMainGalleryImage(i);
+                    });
+                    
+                    return img;
+                };
+
+                // Generate thumbnails (duplicate set for infinite scroll effect)
+                for (let j = 0; j < 2; j++) {
+                    for(let i=1; i<=totalGalleryImages; i++) {
+                        const thumb = createThumbnail(i);
+                        galleryThumbnails.appendChild(thumb);
+                        if(j === 0) thumbnailElements.push(thumb); // Only keep track of first set for active state
+                    }
+                }
+
+                // Initial active state
+                if(thumbnailElements.length > 0) {
+                     thumbnailElements[0].classList.add('active');
+                }
+
+                function updateMainGalleryImage(index) {
+                    currentGalleryIndex = index;
+                    
+                    // Fade out effect
+                    mainGalleryImg.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        mainGalleryImg.src = `assets/galeri_${index}.webp`;
+                        mainGalleryImg.style.opacity = '1';
+                        
+                        // Update active state on thumbnails (update all clones too)
+                        const allThumbs = document.querySelectorAll('.gallery-thumb');
+                        allThumbs.forEach(t => t.classList.remove('active'));
+                        allThumbs.forEach(t => {
+                            if(parseInt(t.dataset.index) === index) {
+                                t.classList.add('active');
+                            }
+                        });
+                    }, 300); // match transition duration
+                }
+
+                btnNextGallery.addEventListener('click', () => {
+                    let next = currentGalleryIndex + 1;
+                    if (next > totalGalleryImages) next = 1;
+                    updateMainGalleryImage(next);
+                });
+
+                btnPrevGallery.addEventListener('click', () => {
+                    let prev = currentGalleryIndex - 1;
+                    if (prev < 1) prev = totalGalleryImages;
+                    updateMainGalleryImage(prev);
+                });
+                
+                // Allow clicking main image to open lightbox
+                mainGalleryImg.addEventListener('click', (e) => {
+                     e.stopPropagation();
+                     openLightbox(mainGalleryImg.src);
+                });
+            }
+
+            // LIGHTBOX SCRIPT
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxClose = document.getElementById('lightbox-close');
+
+            const openLightbox = (src) => {
+                lightboxImg.src = src;
+                lightbox.classList.remove('hidden');
+                // Use requestAnimationFrame for smoother transition unhiding
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        lightbox.classList.remove('opacity-0');
+                        lightboxImg.classList.remove('scale-95');
+                        lightboxImg.classList.add('scale-100');
+                    });
+                });
+            };
+
+            const closeLightbox = () => {
+                lightbox.classList.add('opacity-0');
+                lightboxImg.classList.remove('scale-100');
+                lightboxImg.classList.add('scale-95');
+                setTimeout(() => lightbox.classList.add('hidden'), 300);
+            };
+
+            // Event delegation for general images (excluding specific ones)
+            document.body.addEventListener('click', (e) => {
+                // Open lightbox for typical content images, but ignore thumbnails and controls
+                if (e.target.tagName.toLowerCase() === 'img' && 
+                    e.target.id !== 'lightbox-img' && 
+                    e.target.closest('#lightbox') === null &&
+                    !e.target.classList.contains('gallery-thumb') &&
+                    e.target.id !== 'gallery-main-img' &&
+                    !e.target.closest('nav') &&
+                    !e.target.closest('.gallery-main-view') // ensure main view is handled separately if needed
+                    ) {
+                    
+                    e.preventDefault();
+                    openLightbox(e.target.src);
+                }
+            });
+
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox || e.target.closest('.w-full.h-full.flex')) closeLightbox();
+            });
+
         });
     </script>
 </body>
 </html>
-```eof
